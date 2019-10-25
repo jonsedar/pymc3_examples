@@ -4,8 +4,10 @@
 
 ##### 2019Q4
 
-Experimental models to demonstrate `pymc3` capabilities. Where suitable, I 
-mightmay submit these Notebooks for inclusion in the pymc3 documentation.
+Experimental models to demonstrate `pymc3` capabilities. 
+
+Where suitable, I will submit these Notebooks for inclusion in the 
+[pymc3 documentation](https://docs.pymc.io/nb_examples/index.html)
 
 
 Note: 
