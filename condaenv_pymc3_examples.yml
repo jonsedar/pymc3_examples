@@ -1,0 +1,27 @@
+name: pymc3_examples
+channels:
+- defaults
+dependencies:
+- python==3.6.*
+- cython
+- ipython
+- jupyter
+- ipywidgets
+- mkl
+- mkl-service
+- numpy
+- scipy
+- matplotlib
+- pandas
+- scikit-learn
+- seaborn
+- patsy
+- statsmodels
+- dnspython
+- tqdm
+- watermark
+- sphinx
+- pytest
+- nose
+- parameterized
+- pip

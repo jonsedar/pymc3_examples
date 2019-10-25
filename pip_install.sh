@@ -1,0 +1,1 @@
+pip install pymc3==3.7 theano arviz daft

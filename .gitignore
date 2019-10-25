@@ -1,0 +1,104 @@
+### DATA ----------------------------------------------------------------------
+
+## flat files
+*.*sv
+*.*json
+
+
+## Office docs
+*.xls*
+*.doc*
+*.ppt*
+*.numbers
+*.pages
+*.key
+*.pdf
+
+## archives
+*.tar*
+*.tgz
+*.zip
+*.bz2
+*.7z
+*.pkl
+
+## basic datastores: sqlite, access, redis, hdf5, feather
+*.db
+*.mdb
+*.rdb
+*.h5
+*.feather
+
+
+### PYTHON --------------------------------------------------------------------
+
+## iPython notebooks
+.ipynb_checkpoints/
+
+## Python builds
+*.py[cod]
+*.egg*
+*.pickle
+*.pkl
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib*
+
+## Install logs
+pip-log.txt
+
+## unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+## Translations
+*.mo
+
+## PyDev (Eclipse)
+.project
+.pydevproject
+
+## PyCharm IDE
+.idea/*
+
+
+## R --------------------------------------------------------------------------
+.RData
+.Rhistory
+
+
+## MISC -----------------------------------------------------------------------
+
+## OSX
+*.asc
+.DS_Store
+*.names
+._*
+.Spotlight-V100
+.Trashes
+
+## Dev configs
+dev.yaml
+
+## Logs
+# ALLOW *.log
+
+
+## C extensions
+*.so
+
+## AOB
+temp/
+reveal.js/
+notebooks/examples/
+dev/
+utils/
+
