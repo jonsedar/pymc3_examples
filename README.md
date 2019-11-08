@@ -51,13 +51,13 @@ $> brew cleanup
 
 ``` yaml
 [user]
-	name = $YOUR_USERNAME
-	email = $YOUR_EMAIL
+    name = $YOUR_USERNAME
+    email = $YOUR_EMAIL
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 ```
 
 
@@ -65,7 +65,7 @@ $> brew cleanup
 
 ``` yaml
 [global]
-device=cpu
+    device=cpu
 ```
 
 
@@ -112,7 +112,7 @@ Cheat sheet of conda commands available
 A quick and cheap way to confirm your binaries are good and the 
 installation works!
 
-#### 1.3.3.1 BLAS / MKL config
+#### 1.3.3.1 Test BLAS / MKL config
 
 View the BLAS / MKL install 
 
@@ -296,7 +296,7 @@ See `data/README_DATA.md`
 
 # General Notes
 
-Any project applicable notes should go in the 00_Overview.ipynb file.
+AOB
 
 ---
 

@@ -1,6 +1,7 @@
 name: pymc3_examples
 channels:
 - defaults
+- conda-forge
 dependencies:
 - python==3.6.*
 - cython
@@ -24,4 +25,5 @@ dependencies:
 - pytest
 - nose
 - parameterized
+- python-graphviz
 - pip
