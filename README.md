@@ -296,7 +296,11 @@ See `data/README_DATA.md`
 
 # General Notes
 
-AOB
+Jupyter Themes
+
+```bash
+$> jt -t monokai -f liberation -fs 10 -nf opensans -nfs 11 -tf opensans -tfs 11 -kl -cellw 90% -T -N
+```
 
 ---
 
