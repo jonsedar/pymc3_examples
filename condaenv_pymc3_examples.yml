@@ -1,12 +1,13 @@
 name: pymc3_examples
 channels:
 - defaults
-- conda-forge
+# - conda-forge
 dependencies:
 - python==3.6.*
 - cython
 - ipython
 - jupyter
+- jupyterlab
 - ipywidgets
 - mkl
 - mkl-service
@@ -14,16 +15,19 @@ dependencies:
 - scipy
 - matplotlib
 - pandas
+- pyarrow
 - scikit-learn
 - seaborn
 - patsy
 - statsmodels
-- dnspython
-- tqdm
-- watermark
-- sphinx
+- python-graphviz
 - pytest
 - nose
 - parameterized
-- python-graphviz
+- tqdm
+- watermark
+- sphinx
+- nbsphinx
+- numpydoc
+- recommonmark
 - pip

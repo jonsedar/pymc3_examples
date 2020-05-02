@@ -9,11 +9,11 @@ Experimental models to demonstrate `pymc3` capabilities.
 Where suitable, I will submit these Notebooks for inclusion in the 
 [pymc3 documentation](https://docs.pymc.io/nb_examples/index.html)
 
-
 Note: 
+
 + Each Notebook is designed to be standalone with a suggested MVP 
 condaenv install, but you can also just install the env for this project.
-+ This project is hosted publically on 
++ This project is hosted publicly on 
 [GitHub](https://github.com/jonsedar/pymc3_examples).
 + This README is MacOS oriented
 
@@ -21,29 +21,43 @@ condaenv install, but you can also just install the env for this project.
 
 # 1. Setup Development Environment
 
-
 ## 1.1 Libraries, Compilers, IDEs
 
-### 1.1.1 Continuum Anaconda Python 3.6.* 64bit 
+### 1.1.1 Continuum Anaconda Python 64bit 
 
-Main site: [https://www.continuum.io/downloads](https://www.continuum.io/downloads)
+This repo uses Python 3.6.*
 
+Download Anaconda distro at [https://www.continuum.io/downloads](https://www.continuum.io/downloads)
 
 ### 1.1.2 C++ compiler
 
-e.g. for Mac OSX using Homebrew
+Theano devs recommend using `clang` (aka `clang++`) by default which you can install using Xcode Command Line Tools
 
-```bash
+```zsh
+$> xcode-select --install
+```
+
+It's also possible to use g++ (gcc), but in my experience that's about 1/2 the speed.
+
+e.g. install via Homebrew
+
+```zsh
 $> brew update && brew upgrade `brew outdated` 
 $> brew install gcc
 ```
 
 ...optional cleanup of old versions afterwards
 
-```bash
+```zsh
 $> brew cleanup
 ```
 
+Note:
+
+1. By default `gcc` is symlinked / points to `clang` on MacOS
+2. It _is_ possible to install a particular version of `gcc` via Homebrew, but this gets installed to a versioned dir e.g. `/usr/local/Cellar/gcc/9.3.0_1/bin/gcc-9` and by default is not symlinked from `gcc`, rather it is available as `gcc-9`
+3. Regardless, it is best to use `clang` because theano is/was developed to this and is optimized (much faster)
+4. Note you then don't need to configure the cxx in `.theanorc`, it uses `clang` by default
 
 ## 1.2 Configs, Dotfiles
 
@@ -60,7 +74,6 @@ $> brew cleanup
     required = true
 ```
 
-
 ### 1.2.2 Theano config `~/.theanorc`
 
 ``` yaml
@@ -68,10 +81,9 @@ $> brew cleanup
     device=cpu
 ```
 
-
 ### 1.2.3 Optional: jupyter configs if not already setup
 
-```bash
+```zsh
 $> jupyter notebook --generate-config
 $> jupyter qtconsole --generate-config
 $> jupyter nbconvert --generate-config
@@ -79,15 +91,12 @@ $> jupyter nbconvert --generate-config
 
 ## 1.3 Clone Code and Create Environment
 
+### 1.3.1 Git clone the repo to your workspace
 
-### 1.3.1 Git clone the repo to your workspace.
-
-
-```bash
+```zsh
 $> git clone https://github.com/jonsedar/pymc3_examples.git
 $> cd pymc3_examples/
 ```
-
 
 ### 1.3.2 Setup a virtual environment for Python libraries
 
@@ -96,8 +105,7 @@ stability for the `pymc3` and `theano` installs.
 
 Pay extra attention to the `.theanorc` config
 
-
-```bash
+```zsh
 $> conda env create --file condaenv_pymc3_examples.yml
 $> activate pymc3_examples
 ```
@@ -105,7 +113,19 @@ $> activate pymc3_examples
 Cheat sheet of conda commands available 
 [online here](https://conda.io/docs/_downloads/conda-cheatsheet.pdf).
 
+#### b. Additional packages via pip
 
+```zsh
+$> /.pip_install.sh
+```
+
+#### c. Additional jupyterlab theme
+
+Requires [NodeJS](https://nodejs.org/en/)
+
+```zsh
+$> jupyter labextension install @telamonian/theme-darcula
+```
 
 ### 1.3.3 Test installation of scientific packages
 
@@ -116,12 +136,13 @@ installation works!
 
 View the BLAS / MKL install 
 
-``` bash
+``` zsh
 $> python -c "import numpy as np; np.__config__.show()"
 ```
 
-Output example...
-```bash
+Example output...
+
+```zsh
 mkl_info:
     libraries = ['mkl_rt', 'pthread']
     library_dirs = ['/Users/jon/anaconda/envs/pymc3_examples/lib']
@@ -149,71 +170,69 @@ lapack_opt_info:
     include_dirs = ['/Users/jon/anaconda/envs/pymc3_examples/include']
 ```
 
-
 #### 1.3.3.2 Test `numpy` install
 
-``` bash
+``` zsh
 $> python -c "import numpy as np; np.test()"
 ```
 
 Example output...
 
-```bash
+```zsh
 7285 passed, 80 skipped, 167 deselected, 12 xfailed, 3 xpassed, 2 warnings in 355.51 seconds
 ```
 
 #### 1.3.3.3 Test `scipy` install
 
-``` bash
+``` zsh
 $> python -c "import scipy as sp; sp.test()"
 ... many tests will run and output a results summary e.g. ...
 ```
 
 Example output...
-```bash
+
+```zsh
 14522 passed, 1274 skipped, 1225 deselected, 79 xfailed, 10 xpassed, 25 warnings in 777.53 seconds 
 ```
 
-
 #### 1.3.3.4 OPTIONAL Test `pymc3` install
-
 
 Method 1:
 
-```bash
+```zsh
 $> python -m pytest -xv --cov=pymc3 --cov-report=html pymc3/
 ```
-
 
 Method 2: 
 
 Takes ~90mins on my Macbook 2017 :/
 
-``` bash
+``` zsh
 $> python -c "import pymc3 as pm; pm.test()"
 ```
 
 Example output...
-```bash
 
+```zsh
+TBD
 ```
-
 
 #### 1.3.3.5 OPTIONAL Test `theano` install
 
 Takes forever, see [installation docs](http://deeplearning.net/software/theano/install_macos.html)
 
 Quicker:
-``` bash
+
+``` zsh
 $> python -c "import theano; theano.test()"
 ```
 
 Alternative (takes ~3 hours)
-``` bash
+
+``` zsh
 $> theano-nose -s
 ... many tests will run and output a results summary e.g. ...
 ```
-
 
 ## 1.4 General Python Dev - Useful stuff
 
@@ -235,28 +254,26 @@ sorted([(x, sys.getsizeof(globals().get(x))) for x in dir() if not x.startswith(
 
 Remove unused packages and tarballs etc as explained [https://conda.io/docs/commands/conda-clean.html](https://conda.io/docs/commands/conda-clean.html)
 
-``` bash
+``` zsh
 $> conda clean -v -a
 ```
-NOTE @2019-01-19 there's an [open bug](https://github.com/conda/conda/pull/7149) in `conda` on Windows that the `~/AppData/Local/Continuum/Anaconda3/pkgs/.trash` directory needs manual emptying afterwards
 
+NOTE @2019-01-19 there's an [open bug](https://github.com/conda/conda/pull/7149) in `conda` on Windows that the `~/AppData/Local/Continuum/Anaconda3/pkgs/.trash` directory needs manual emptying afterwards
 
 ### 1.4.3 Specify number of CPUs for MKL to use
 
 Ought to provide a speed-boost for MKL operations (many numpy, scipy operations under the hood). See  [docs](https://docs.anaconda.com/mkl-service/)
 
-```
->>> import mkl
->>> mkl.set_num_threads(2)
->>> mkl.get_max_threads()
-2
+```zsh
+$> python -c "import mkl; mkl.set_num_threads(4); print(mkl.get_max_threads())
+4
 ```
 
 ### 1.4.4 MVP Jupyter Widget
 
 Interactive widgets are cool. Beware potential issue with lax requirements. Ensure `conda_*.yaml` contains correct pairs of :
 
-```
+```yaml
 - ipywidgets==6.0.0
 - widgetsnbextension==2.*
 ```
@@ -287,7 +304,6 @@ for att in dir(myobject):
 
 ---
 
-
 # Data
 
 See `data/README_DATA.md`
@@ -296,8 +312,6 @@ See `data/README_DATA.md`
 
 # General Notes
 
-AOB
-
 ---
 
-**Jonathan Sedar &copy; 2019**
+**Jonathan Sedar &copy; 2020**

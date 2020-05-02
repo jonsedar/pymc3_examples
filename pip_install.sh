@@ -1,1 +1,1 @@
-pip install pymc3==3.7 theano arviz daft
+pip install pymc3==3.8 theano arviz==0.6.* daft
